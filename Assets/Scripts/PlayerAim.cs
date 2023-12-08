@@ -9,19 +9,22 @@ public class PlayerAim : MonoBehaviour
 {
     private Camera mainCamera;
 
-    void Start()
+    private void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
-    void Update()
+    private void Update()
+    {
+        UpdatePointer();
+    }
+
+    private void UpdatePointer()
     {
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
         Vector3 rotation = (mousePosition - transform.position).normalized;
 
         float rotataionZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-
         transform.rotation = Quaternion.Euler(0, 0, rotataionZ);
     }
 }
