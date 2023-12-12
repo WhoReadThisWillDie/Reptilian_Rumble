@@ -61,8 +61,7 @@ public class AiChase : MonoBehaviour
         }
 
         Vector2 targetPosition = transform.position + Vector3.right * patrolDirection * patrolSpeed * Time.deltaTime;
-
-        // Move towards the target position
+        
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
     }
     private void attack()
