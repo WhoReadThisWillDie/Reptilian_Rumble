@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class AiChase : MonoBehaviour
 {
-    public float speed;
-    public float patrolSpeed;
-    public double chaseDistance;
-    public double attackDistance;
-    public Transform[] moveSpots;
-    
+    [SerializeField] private float speed;
+    [SerializeField] private float patrolSpeed;
+    [SerializeField] private double chaseDistance;
+    [SerializeField] private double attackDistance;
+    [SerializeField] private Transform[] moveSpots;
+
     private Transform target;
     private bool isInAttackRange;
     private bool isInChaseRange;
@@ -28,29 +28,29 @@ public class AiChase : MonoBehaviour
     void FixedUpdate()
     {
         distanceBetweenPandE = Vector2.Distance(transform.position, target.position);
-        
-        
+
+
         if (distanceBetweenPandE > attackDistance && distanceBetweenPandE < chaseDistance)
         {
-            chase();
+            Chase();
         }
-        
+
         else if (distanceBetweenPandE <= attackDistance)
         {
-            attack();
+            Attack();
         }
         else
         {
-            patrol();
+            Patrol();
         }
     }
 
-    private void chase()
+    private void Chase()
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
-    private void patrol()
+    private void Patrol()
     {
         timer -= Time.deltaTime;
 
@@ -61,11 +61,11 @@ public class AiChase : MonoBehaviour
         }
 
         Vector2 targetPosition = transform.position + Vector3.right * patrolDirection * patrolSpeed * Time.deltaTime;
-        
+
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
     }
-    private void attack()
+    private void Attack()
     {
-        
+
     }
 }

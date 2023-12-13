@@ -7,27 +7,27 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float spawnDistance = 0.5f;
-    
+
     [SerializeField] private int quantityToSpawn;
 
     [SerializeField] private GameObject[] enemyPrefabs;
 
     [SerializeField] private bool canSpawn = true;
-    
+
     private List<Vector2> spawnedPositions = new List<Vector2>();
 
     private int numberOfEnemies;
 
     private void Start()
     {
-        for(int i = 0; i <= 5; i++)
+        for (int i = 0; i <= 5; i++)
         {
-            spawn();
+            Spawn();
         }
     }
-    
 
-    private void spawn()
+
+    private void Spawn()
     {
         float randomX = UnityEngine.Random.Range(transform.position.x - spawnDistance, transform.position.x + spawnDistance);
         float randomY = UnityEngine.Random.Range(transform.position.y - spawnDistance, transform.position.y + spawnDistance);
@@ -41,13 +41,13 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            spawn();
+            Spawn();
         }
-        
-        
-        
+
+
+
     }
-    
+
     private bool IsOverlapping(Vector2 newSpawnPosition)
     {
         foreach (Vector2 position in spawnedPositions)
@@ -55,10 +55,10 @@ public class EnemySpawner : MonoBehaviour
             float distance = Vector2.Distance(position, newSpawnPosition);
             if (distance < 0.2f)
             {
-                return true; 
+                return true;
             }
         }
-        return false; 
+        return false;
     }
 
 }
