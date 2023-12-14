@@ -2,14 +2,13 @@ using System;
 using System.Diagnostics;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerM : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Vector2 input;
     private Animator animator;
 
     private bool isFacingRight = true;
-
     [SerializeField] private float speed;
 
     private void Start()
@@ -41,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(new Vector3(0, 180, 0));
             animator.SetBool("IsWalking", true);
         }
-        else if (input.y != 0)
+        else if (input.x != 0 || input.y != 0)
         {
             animator.SetBool("IsWalking", true);
         }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemySpawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     [SerializeField] private float spawnDistance = 0.5f;
 
@@ -15,8 +15,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool canSpawn = true;
 
     private List<Vector2> spawnedPositions = new List<Vector2>();
-
-    private int numberOfEnemies;
 
     private void Start()
     {
@@ -43,9 +41,6 @@ public class EnemySpawner : MonoBehaviour
         {
             Spawn();
         }
-
-
-
     }
 
     private bool IsOverlapping(Vector2 newSpawnPosition)

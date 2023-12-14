@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiChase : MonoBehaviour
+public class EnemyChase : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float patrolSpeed;
@@ -14,7 +14,7 @@ public class AiChase : MonoBehaviour
     private Transform target;
     private bool isInAttackRange;
     private bool isInChaseRange;
-    private double distanceBetweenPandE;
+    private double distanceToPlayer;
     private int randomSpot;
     private float patrolDirection = 1.0f;
     private float patrolTimer = 2.0f; // Time to patrol in one direction before changing
@@ -27,15 +27,15 @@ public class AiChase : MonoBehaviour
 
     void FixedUpdate()
     {
-        distanceBetweenPandE = Vector2.Distance(transform.position, target.position);
+        distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
 
-        if (distanceBetweenPandE > attackDistance && distanceBetweenPandE < chaseDistance)
+        if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
         {
             Chase();
         }
 
-        else if (distanceBetweenPandE <= attackDistance)
+        else if (distanceToPlayer <= attackDistance)
         {
             Attack();
         }

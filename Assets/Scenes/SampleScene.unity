@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 413437588}
   - component: {fileID: 413437592}
   - component: {fileID: 413437591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,6 +709,11 @@ Tilemap:
 --- !u!50 &664004454 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6171977746822967298, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
+  m_PrefabInstance: {fileID: 7105268631403725609}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &704463467 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7147518328486525036, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
   m_PrefabInstance: {fileID: 7105268631403725609}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &722709907
@@ -42117,6 +42122,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 430273865037813442, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
+      propertyPath: delay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 430273865037813442, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 704463467}
+    - target: {fileID: 430273865037813442, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
+      propertyPath: attackRange
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 430273865037813442, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 914252571081163821, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0113
@@ -42333,10 +42354,6 @@ PrefabInstance:
       propertyPath: rb
       value: 
       objectReference: {fileID: 664004454}
-    - target: {fileID: 6824439518146774033, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
-      propertyPath: speed
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7081076833053300093, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
       propertyPath: m_Layer
       value: 3
