@@ -320,10 +320,11 @@ GameObject:
   - component: {fileID: 413437590}
   - component: {fileID: 413437589}
   - component: {fileID: 413437588}
+  - component: {fileID: 413437593}
   - component: {fileID: 413437592}
   - component: {fileID: 413437591}
   m_Layer: 6
-  m_Name: Square
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,6 +486,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2552497, y: 1.6660028}
   m_EdgeRadius: 0
+--- !u!114 &413437593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413437587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30620d1353531a41b0b087c344fa0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!1 &457019308
 GameObject:
   m_ObjectHideFlags: 0
@@ -42125,6 +42139,10 @@ PrefabInstance:
     - target: {fileID: 430273865037813442, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
       propertyPath: delay
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 430273865037813442, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 430273865037813442, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
       propertyPath: attackPoint
