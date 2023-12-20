@@ -19,10 +19,12 @@ public class EnemyChase : MonoBehaviour
     private float patrolDirection = 1.0f;
     private float patrolTimer = 2.0f; // Time to patrol in one direction before changing
     private float timer;
+    private Animator animator;
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         timer = patrolTimer;
+        animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -48,6 +50,8 @@ public class EnemyChase : MonoBehaviour
     private void Chase()
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        animator.SetBool("isWalking", true);
+        FlipIfNeeded(target.position.x - transform.position.x);
     }
 
     private void Patrol()
@@ -63,9 +67,27 @@ public class EnemyChase : MonoBehaviour
         Vector2 targetPosition = transform.position + Vector3.right * patrolDirection * patrolSpeed * Time.deltaTime;
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
+        animator.SetBool("isWalking", true);
+        FlipIfNeeded(patrolDirection);
     }
     private void Attack()
     {
+        animator.SetBool("isWalking", false);
+        
+    }
 
+    private void Flip()
+    {
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
+    }
+    
+    private void FlipIfNeeded(float direction)
+    {
+        if ((direction > 0 && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
+        {
+            Flip();
+        }
     }
 }
