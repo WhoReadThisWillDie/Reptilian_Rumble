@@ -18,7 +18,7 @@ public class Sword : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void Attack()
@@ -44,7 +44,7 @@ public class Sword : MonoBehaviour
         isAttackBlocked = false;
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
             return;
