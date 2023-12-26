@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using Unity.VisualScripting;
 using UnityEngine;
-using Vector3 = UnityEngine.Vector3;
 
-public class PlayerAim : MonoBehaviour
+public class EnemyAim : MonoBehaviour
 {
-    private Camera mainCamera;
     private Transform transformWeapon;
 
     private bool isFacingRight = true;
+    private GameObject player;
 
     private void Start()
     {
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        player = GameObject.FindGameObjectWithTag("Player");
         transformWeapon = GetComponentInChildren<Sword>().transform;
     }
 
@@ -25,10 +22,10 @@ public class PlayerAim : MonoBehaviour
 
     private void UpdateWeaponPosition()
     {
-
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log("Mouse " + mousePosition);
-        Vector3 rotation = (mousePosition - transform.position).normalized;
+        
+        Vector3 playerPosition = player.transform.position;
+        Debug.Log("Player " + playerPosition);
+        Vector3 rotation = (playerPosition - transform.position).normalized;
 
         float rotataionZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transformWeapon.eulerAngles = new Vector3(0, 0, rotataionZ);

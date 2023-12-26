@@ -20,11 +20,13 @@ public class EnemyChase : MonoBehaviour
     private float patrolTimer = 2.0f; // Time to patrol in one direction before changing
     private float timer;
     private Animator animator;
+    private Sword sword;
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         timer = patrolTimer;
         animator = GetComponent<Animator>();
+        sword = GetComponentInChildren<Sword>();
     }
 
     void FixedUpdate()
@@ -51,7 +53,7 @@ public class EnemyChase : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         animator.SetBool("isWalking", true);
-        FlipIfNeeded(target.position.x - transform.position.x);
+        //FlipIfNeeded(target.position.x - transform.position.x);
     }
 
     private void Patrol()
@@ -68,26 +70,27 @@ public class EnemyChase : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
         animator.SetBool("isWalking", true);
-        FlipIfNeeded(patrolDirection);
+        //FlipIfNeeded(patrolDirection);
     }
     private void Attack()
     {
         animator.SetBool("isWalking", false);
+        sword.Attack();
         
     }
 
-    private void Flip()
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-    }
-    
-    private void FlipIfNeeded(float direction)
-    {
-        if ((direction > 0 && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
-        {
-            Flip();
-        }
-    }
+    // private void Flip()
+    // {
+    //     Vector3 localScale = transform.localScale;
+    //     localScale.x *= -1;
+    //     transform.localScale = localScale;
+    // }
+    //
+    // private void FlipIfNeeded(float direction)
+    // {
+    //     if ((direction > 0 && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
+    //     {
+    //         Flip();
+    //     }
+    // }
 }

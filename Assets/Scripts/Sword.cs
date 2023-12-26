@@ -34,7 +34,7 @@ public class Sword : MonoBehaviour
         Collider2D[] enemiesToHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in enemiesToHit)
         {
-            enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
+            enemy.GetComponent<Health>().TakeDamage(damage);
         }
     }
 
