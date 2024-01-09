@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i <= 5; i++)
+        for (int i = 0; i < quantityToSpawn; i++)
         {
             Spawn();
         }

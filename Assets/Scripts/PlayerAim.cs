@@ -27,7 +27,6 @@ public class PlayerAim : MonoBehaviour
     {
 
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log("Mouse " + mousePosition);
         Vector3 rotation = (mousePosition - transform.position).normalized;
 
         float rotataionZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;

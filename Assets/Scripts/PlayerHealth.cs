@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public HealthBar healthBar;
+
     [SerializeField] private int health;
-    
+
+    public void Start()
+    {
+        healthBar.SetHealth(health);
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar.SetHealth(health);
 
         if (health <= 0)
         {
@@ -16,8 +24,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+
+    // Death logic
     private void Die()
     {
-        
+        Destroy(this.gameObject);
     }
 }

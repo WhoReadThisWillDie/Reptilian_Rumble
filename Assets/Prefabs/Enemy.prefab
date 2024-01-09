@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f0d3b1075aafc4bb333898359f30da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLayer:
+  hitLayer:
     serializedVersion: 2
     m_Bits: 8
   attackPoint: {fileID: 410911687464701559}
@@ -202,11 +202,11 @@ GameObject:
   - component: {fileID: 2851726175718801140}
   - component: {fileID: 6682338979727814968}
   - component: {fileID: 9127882859184259430}
+  - component: {fileID: 1087909569546282029}
   - component: {fileID: 8246808234434070242}
   - component: {fileID: 5226746176370449586}
   - component: {fileID: 1425010800673173961}
   - component: {fileID: 7980144734886096562}
-  - component: {fileID: 1087909569546282029}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -324,6 +324,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab2322745695a442ad6716b573f9ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1087909569546282029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616776092791334810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46aa49d5aa4669c4ab6c0a3fb3cf6eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8246808234434070242
 Rigidbody2D:
   serializedVersion: 4
@@ -431,15 +443,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1472815, y: 0.19937623}
   m_EdgeRadius: 0
---- !u!114 &1087909569546282029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8616776092791334810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46aa49d5aa4669c4ab6c0a3fb3cf6eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

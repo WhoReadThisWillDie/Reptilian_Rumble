@@ -22,9 +22,8 @@ public class EnemyAim : MonoBehaviour
 
     private void UpdateWeaponPosition()
     {
-        
+
         Vector3 playerPosition = player.transform.position;
-        Debug.Log("Player " + playerPosition);
         Vector3 rotation = (playerPosition - transform.position).normalized;
 
         float rotataionZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;

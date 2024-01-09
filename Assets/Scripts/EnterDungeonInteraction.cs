@@ -11,10 +11,7 @@ public class EnterDungeonInteraction : MonoBehaviour
     public bool isInRange;
     public KeyCode interactKey;
     public UnityEvent interactAction;
-    void Start()
-    {
-        
-    } 
+
     void Update()
     {
         if (isInRange)
