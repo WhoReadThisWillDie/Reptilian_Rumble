@@ -11143,17 +11143,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1266529317096617414, guid: 7943e122d80a2c341b06d40462a4611e, type: 3}
+      propertyPath: bounceForce
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1266529317096617414, guid: 7943e122d80a2c341b06d40462a4611e, type: 3}
+      propertyPath: delayAfterBounce
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6413145472686163117, guid: 7943e122d80a2c341b06d40462a4611e, type: 3}
       propertyPath: hitLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6521734983652671918, guid: 7943e122d80a2c341b06d40462a4611e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 168.17
+      value: 167.42
       objectReference: {fileID: 0}
     - target: {fileID: 6521734983652671918, guid: 7943e122d80a2c341b06d40462a4611e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 336.956
+      value: 337.115
       objectReference: {fileID: 0}
     - target: {fileID: 6521734983652671918, guid: 7943e122d80a2c341b06d40462a4611e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11428,6 +11436,10 @@ PrefabInstance:
     - target: {fileID: 3480574953013883122, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584838766005281025, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
+      propertyPath: m_TagString
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 3667769101895345162, guid: f475ed72408a8aa448f5eb55f4830a40, type: 3}
       propertyPath: m_LocalRotation.w
