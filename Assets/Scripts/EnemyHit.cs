@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
-    [SerializeField] private float flashDuration = 0.2f;
-    [SerializeField] private Color flashColor = Color.red;
-    [SerializeField] float bounceForce = 0.5f;
-    
+    [SerializeField] private float flashDuration;
+    [SerializeField] private Color flashColor;
+    [SerializeField] private float bounceForce;
+    [SerializeField] private float bounceDuration;
+
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     private bool isFlashing = false;
@@ -17,9 +18,9 @@ public class EnemyHit : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
-    private void Update()
+    public void TakeHit()
     {
-        
+
         if (EnemyHealth.GetIsHit() && !isFlashing)
         {
             isFlashing = true;
@@ -35,19 +36,17 @@ public class EnemyHit : MonoBehaviour
         spriteRenderer.color = originalColor;
         isFlashing = false;
     }
-    
+
     private IEnumerator BounceBack()
     {
         Vector3 originalPosition = transform.position;
         Vector3 targetPosition = originalPosition - transform.right * bounceForce; // Adjust direction and force as needed
 
         float elapsedTime = 0f;
-        float duration = 0.1f; // Adjust the duration of the bounce
-        
-        
-        while (elapsedTime < duration)
+
+        while (elapsedTime < bounceDuration)
         {
-            transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / duration);
+            transform.position = Vector2.Lerp(originalPosition, targetPosition, elapsedTime / bounceDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -60,6 +59,6 @@ public class EnemyHit : MonoBehaviour
 
         // Reset the sprite's position to avoid potential visual discrepancies
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
-        
+
     }
 }

@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2c6c90acfe5ec45bf0ed0bbbe6d1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
   health: 5
 --- !u!1 &1552471059427777872
 GameObject:
@@ -423,8 +424,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackPoint: {fileID: 0}
-  attackRange: 0
-  damage: 0
+  attackRange: 0.1
+  damage: 1
+  delay: 0.3
 --- !u!1 &6597275613402728050
 GameObject:
   m_ObjectHideFlags: 0

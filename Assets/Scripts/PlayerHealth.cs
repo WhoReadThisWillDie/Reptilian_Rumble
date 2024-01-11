@@ -24,10 +24,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-
     // Death logic
     private void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

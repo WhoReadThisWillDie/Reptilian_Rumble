@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class Sword : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class Sword : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
     [SerializeField] private int damage;
+    [SerializeField] private float delay;
 
-    private const float delay = 0.3f;
     private bool isAttackBlocked = false;
 
     private void Start()
@@ -25,7 +26,10 @@ public class Sword : MonoBehaviour
     {
         // Manage animations and delays between attacks
         if (isAttackBlocked)
+        {
             return;
+        }
+
         animator.SetTrigger("Attack");
         isAttackBlocked = true;
         StartCoroutine(DelayAttack());
@@ -45,6 +49,7 @@ public class Sword : MonoBehaviour
                 foreach (Collider2D enemy in objectsToHit)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    enemy.GetComponent<EnemyHit>().TakeHit();
                 }
                 break;
         }
@@ -59,7 +64,9 @@ public class Sword : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
+        {
             return;
+        }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }

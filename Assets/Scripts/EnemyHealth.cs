@@ -6,8 +6,8 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int health;
     private static bool isHit;
-    [SerializeField] private float hitCooldownDuration = 2.0f;
-    
+    [SerializeField] private float hitCooldownDuration;
+
     public void TakeDamage(int damage)
     {
         isHit = true;
@@ -25,14 +25,14 @@ public class EnemyHealth : MonoBehaviour
     // Death logic
     private void Die()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
     public static bool GetIsHit()
     {
         return isHit;
     }
-    
+
     private IEnumerator HitCooldown()
     {
         while (true)

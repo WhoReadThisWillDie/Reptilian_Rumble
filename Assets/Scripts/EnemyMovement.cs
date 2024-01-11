@@ -1,28 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using UnityEngine;
 
-public class EnemyChase : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float patrolSpeed;
     [SerializeField] private double chaseDistance;
     [SerializeField] private double attackDistance;
-    [SerializeField] private Transform[] moveSpots;
 
+    private Rigidbody2D rb;
     private Transform target;
-    private bool isInAttackRange;
-    private bool isInChaseRange;
+    private Animator animator;
+    private Sword sword;
+
     private double distanceToPlayer;
-    private int randomSpot;
     private float patrolDirection = 1.0f;
     private float patrolTimer = 2.0f; // Time to patrol in one direction before changing
     private float timer;
-    private Animator animator;
-    private Sword sword;
+    private bool isAttackBlocked = true;
+    private float delayBeforeAttack = 0.5f;
+
+
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         timer = patrolTimer;
         animator = GetComponent<Animator>();
@@ -31,14 +35,16 @@ public class EnemyChase : MonoBehaviour
 
     void FixedUpdate()
     {
-        distanceToPlayer = Vector2.Distance(transform.position, target.position);
+        // Enemy doesn't fly away when pushed by player
+        rb.velocity = new Vector2(0, 0);
 
+        distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
         if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
         {
             Chase();
+            isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
         }
-
         else if (distanceToPlayer <= attackDistance)
         {
             Attack();
@@ -46,6 +52,7 @@ public class EnemyChase : MonoBehaviour
         else
         {
             Patrol();
+            isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
         }
     }
 
@@ -53,7 +60,6 @@ public class EnemyChase : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         animator.SetBool("isWalking", true);
-        //FlipIfNeeded(target.position.x - transform.position.x);
     }
 
     private void Patrol()
@@ -70,27 +76,25 @@ public class EnemyChase : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
         animator.SetBool("isWalking", true);
-        //FlipIfNeeded(patrolDirection);
     }
+
     private void Attack()
     {
         animator.SetBool("isWalking", false);
+        Debug.Log("Attacking");
+        StartCoroutine(DelayBeforeAttack(delayBeforeAttack));
+
+        if (isAttackBlocked)
+        {
+            return;
+        }
+
         sword.Attack();
-        
     }
 
-    // private void Flip()
-    // {
-    //     Vector3 localScale = transform.localScale;
-    //     localScale.x *= -1;
-    //     transform.localScale = localScale;
-    // }
-    //
-    // private void FlipIfNeeded(float direction)
-    // {
-    //     if ((direction > 0 && transform.localScale.x < 0) || (direction < 0 && transform.localScale.x > 0))
-    //     {
-    //         Flip();
-    //     }
-    // }
+    private IEnumerator DelayBeforeAttack(float delayBeforeAttack)
+    {
+        yield return new WaitForSeconds(delayBeforeAttack);
+        isAttackBlocked = false;
+    }
 }
