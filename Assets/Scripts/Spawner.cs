@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private bool canSpawn = true;
 
     private List<Vector2> spawnedPositions = new List<Vector2>();
+    private static int remainingEnemies;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class Spawner : MonoBehaviour
         {
             Spawn();
         }
+
+        remainingEnemies = quantityToSpawn;
     }
 
 
@@ -54,6 +57,16 @@ public class Spawner : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public static int GetRemainingEnemies()
+    {
+        return remainingEnemies;
+    }
+
+    public static void SetRemainingEnemies(int numberOfEnemies)
+    {
+        remainingEnemies = numberOfEnemies;
     }
 
 }

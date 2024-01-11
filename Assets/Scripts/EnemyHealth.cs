@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            Spawner.SetRemainingEnemies(Spawner.GetRemainingEnemies() - 1);
         }
 
         StartCoroutine(HitCooldown());
