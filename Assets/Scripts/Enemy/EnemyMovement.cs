@@ -81,7 +81,6 @@ public class EnemyMovement : MonoBehaviour
     private void Attack()
     {
         animator.SetBool("isWalking", false);
-        Debug.Log("Attacking");
         StartCoroutine(DelayBeforeAttack(delayBeforeAttack));
 
         if (isAttackBlocked)
