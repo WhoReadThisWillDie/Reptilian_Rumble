@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: EnviroumentTiles_5
+  m_Name: EnvironmentTiles_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1050682895, guid: f6fdcd9c7a7d00f4898b08837412d61a, type: 3}
+  m_Sprite: {fileID: 751151603, guid: f6fdcd9c7a7d00f4898b08837412d61a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

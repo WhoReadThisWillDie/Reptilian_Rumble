@@ -12,8 +12,6 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private GameObject[] enemyPrefabs;
 
-    [SerializeField] private bool canSpawn = true;
-
     private List<Vector2> spawnedPositions = new List<Vector2>();
     private static int remainingEnemies;
 
