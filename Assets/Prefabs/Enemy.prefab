@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30620d1353531a41b0b087c344fa0e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 50
   hitCooldownDuration: 0.1
 --- !u!114 &1087909569546282029
 MonoBehaviour:
