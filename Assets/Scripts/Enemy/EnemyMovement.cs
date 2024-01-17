@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private double chaseDistance;
     [SerializeField] private double attackDistance;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rb2d;
     private Transform target;
     private Animator animator;
     private Sword sword;
@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         timer = patrolTimer;
         animator = GetComponent<Animator>();
@@ -36,7 +36,6 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Enemy doesn't fly away when pushed by player
-        rb.velocity = new Vector2(0, 0);
 
         distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
@@ -72,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
             timer = patrolTimer; // Reset the timer
         }
 
-        Vector2 targetPosition = transform.position + Vector3.right * patrolDirection * patrolSpeed * Time.deltaTime;
+        Vector3 targetPosition = transform.position + Vector3.right * patrolDirection * patrolSpeed * Time.deltaTime;
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
         animator.SetBool("isWalking", true);

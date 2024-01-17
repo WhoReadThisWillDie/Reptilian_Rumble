@@ -49,7 +49,7 @@ public class Sword : MonoBehaviour
                 foreach (Collider2D enemy in objectsToHit)
                 {
                     enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    enemy.GetComponent<EnemyHit>().TakeHit();
+                    enemy.GetComponent<EnemyHit>().TakeHit(GetComponentInParent<Transform>()); // pass the player transform
                 }
                 break;
         }

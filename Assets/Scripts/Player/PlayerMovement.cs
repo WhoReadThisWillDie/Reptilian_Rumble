@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerM : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D rb2d;
     private Vector2 input;
     private Animator animator;
     [SerializeField] private float speed;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -27,7 +27,7 @@ public class PlayerM : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = input * speed;
+        rb2d.velocity = input * speed;
     }
 
     private void ManageAnimations()

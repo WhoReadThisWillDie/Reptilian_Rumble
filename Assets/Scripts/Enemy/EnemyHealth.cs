@@ -8,12 +8,11 @@ public class EnemyHealth : MonoBehaviour
     private static bool isHit;
     [SerializeField] private float hitCooldownDuration;
     private Spawner spawner;
-    
+
     public void TakeDamage(int damage)
     {
         isHit = true;
         health -= damage;
-        int remainingEnemies;
 
         if (health <= 0)
         {
@@ -44,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
             isHit = false; // Reset isHit to false after cooldown duration
         }
     }
-    
+
     public void SetSpawner(Spawner spawner)
     {
         this.spawner = spawner;

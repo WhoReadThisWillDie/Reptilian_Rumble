@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
-    [SerializeField] private float flashDuration = 0.1f;
-    [SerializeField] private Color flashColor = Color.red;
-    [SerializeField] private float bounceForce = 5f;
-    [SerializeField] private float bounceDuration = 0.2f;
+    [SerializeField] private float flashDuration;
+    [SerializeField] private Color flashColor;
+    [SerializeField] private int bounceForce;
+    [SerializeField] private float bounceDuration;
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     private bool isFlashing = false;
     private Rigidbody2D rb2d;
-    private bool isBouncingBack = false;
 
     private void Start()
     {
@@ -22,13 +21,13 @@ public class EnemyHit : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    public void TakeHit()
+    public void TakeHit(Transform sender)
     {
         if (EnemyHealth.GetIsHit() && !isFlashing)
         {
             isFlashing = true;
             StartCoroutine(FlashCoroutine());
-            StartCoroutine(BounceBack());
+            Bounce(sender);
         }
     }
 
@@ -40,28 +39,16 @@ public class EnemyHit : MonoBehaviour
         isFlashing = false;
     }
 
-
-private IEnumerator BounceBack()
-{
-    Vector3 originalPosition = transform.position;
-    Vector3 targetPosition = originalPosition - transform.right * bounceForce; // Adjust direction and force as needed
-
-    float elapsedTime = 0f;
-
-    while (elapsedTime < bounceDuration)
+    private void Bounce(Transform sender)
     {
-        // Calculate the new position based on the interpolation
-        Vector3 newPosition = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / bounceDuration);
-
-        // Move the enemy to the new position while handling collisions
-        rb2d.MovePosition(newPosition);
-
-        elapsedTime += Time.deltaTime;
-        yield return null;
+        Vector2 direction = (transform.position - sender.position).normalized;
+        rb2d.AddForce(direction * bounceForce, ForceMode2D.Impulse);
+        StartCoroutine(Reset());
     }
 
-    // Reset the sprite's position to avoid potential visual discrepancies
-    transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
-}
-
+    private IEnumerator Reset()
+    {
+        yield return new WaitForSeconds(bounceDuration);
+        rb2d.velocity = new Vector2(0, 0);
+    }
 }
