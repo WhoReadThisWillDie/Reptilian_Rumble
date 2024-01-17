@@ -7,16 +7,18 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int health;
     private static bool isHit;
     [SerializeField] private float hitCooldownDuration;
-
+    private Spawner spawner;
+    
     public void TakeDamage(int damage)
     {
         isHit = true;
         health -= damage;
+        int remainingEnemies;
 
         if (health <= 0)
         {
             Die();
-            Spawner.SetRemainingEnemies(Spawner.GetRemainingEnemies() - 1);
+            spawner.SetRemainingEnemies(spawner.GetRemainingEnemies() - 1);
         }
 
         StartCoroutine(HitCooldown());
@@ -41,5 +43,10 @@ public class EnemyHealth : MonoBehaviour
             yield return new WaitForSeconds(hitCooldownDuration);
             isHit = false; // Reset isHit to false after cooldown duration
         }
+    }
+    
+    public void SetSpawner(Spawner spawner)
+    {
+        this.spawner = spawner;
     }
 }

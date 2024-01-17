@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject[] enemyPrefabs;
 
     private List<Vector2> spawnedPositions = new List<Vector2>();
-    private static int remainingEnemies;
+    private int remainingEnemies;
 
     private void Start()
     {
@@ -36,7 +36,9 @@ public class Spawner : MonoBehaviour
         if (!IsOverlapping(spawnPosition))
         {
             spawnedPositions.Add(spawnPosition);
-            Instantiate(enemyPrefabs[0], spawnPosition, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefabs[0], spawnPosition, Quaternion.identity);
+            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            enemyHealth.SetSpawner(this);
         }
         else
         {
@@ -57,12 +59,12 @@ public class Spawner : MonoBehaviour
         return false;
     }
 
-    public static int GetRemainingEnemies()
+    public int GetRemainingEnemies()
     {
         return remainingEnemies;
     }
 
-    public static void SetRemainingEnemies(int numberOfEnemies)
+    public void SetRemainingEnemies(int numberOfEnemies)
     {
         remainingEnemies = numberOfEnemies;
     }
