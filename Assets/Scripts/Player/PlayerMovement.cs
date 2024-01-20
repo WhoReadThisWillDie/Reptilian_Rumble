@@ -8,6 +8,7 @@ public class PlayerM : MonoBehaviour
     private Vector2 input;
     private Animator animator;
     [SerializeField] private float speed;
+    public bool Dead = false;
 
     private void Start()
     {
@@ -17,6 +18,10 @@ public class PlayerM : MonoBehaviour
 
     private void Update()
     {
+        if (Dead)
+        {
+            return;
+        }
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
 

@@ -9,8 +9,8 @@ public class PlayerAim : MonoBehaviour
 {
     private Camera mainCamera;
     private Transform transformWeapon;
-
     private bool isFacingRight = true;
+    public PlayerM playerM;
 
     private void Start()
     {
@@ -20,6 +20,10 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
+        if (playerM.Dead)
+        {
+            return;
+        }
         UpdateWeaponPosition();
     }
 

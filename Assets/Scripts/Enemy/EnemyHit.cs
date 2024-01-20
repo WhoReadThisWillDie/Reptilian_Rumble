@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
@@ -12,12 +13,12 @@ public class EnemyHit : MonoBehaviour
     private Color originalColor;
     private bool isFlashing = false;
     private Rigidbody2D rb2d;
+    private int randomSound;
 
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -26,12 +27,12 @@ public class EnemyHit : MonoBehaviour
         if (EnemyHealth.GetIsHit() && !isFlashing)
         {
             isFlashing = true;
-            StartCoroutine(FlashCoroutine());
+            StartCoroutine(FlashCoroutineandSound());
             Bounce(sender);
         }
     }
 
-    private IEnumerator FlashCoroutine()
+    private IEnumerator FlashCoroutineandSound()
     {
         spriteRenderer.color = flashColor;
         yield return new WaitForSeconds(flashDuration);

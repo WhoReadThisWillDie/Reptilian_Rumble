@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,18 @@ public class EnemyHealth : MonoBehaviour
     private static bool isHit;
     [SerializeField] private float hitCooldownDuration;
     private Spawner spawner;
+    public GameObject sword;
+    public GameObject deadEnemy;
+    private Rigidbody2D rb;
+    private Renderer myRenderer;
+    public EnemyMovement enemyMovement;
+
+    private void Start()
+    {
+        deadEnemy.SetActive(false);
+        rb = GetComponent<Rigidbody2D>();
+        myRenderer = GetComponent<Renderer>();
+    }
 
     public void TakeDamage(int damage)
     {
@@ -27,8 +40,13 @@ public class EnemyHealth : MonoBehaviour
     // Death logic
     private void Die()
     {
-        Destroy(gameObject);
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        sword.SetActive(false);
+        deadEnemy.SetActive(true);
+        myRenderer.enabled = false;
+        enemyMovement.Dead = true;
     }
+    
 
     public static bool GetIsHit()
     {

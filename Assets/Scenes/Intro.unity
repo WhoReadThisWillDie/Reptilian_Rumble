@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 1837218364}
   - component: {fileID: 1837218363}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837218361}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 077410ad04544ad479303b8ab9cab1df, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: eb32796e1ae47084b853cc6750a11653, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 874750501}

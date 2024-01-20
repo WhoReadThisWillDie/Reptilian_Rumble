@@ -8,7 +8,7 @@ public class EnemyAim : MonoBehaviour
 
     private bool isFacingRight = true;
     private GameObject player;
-
+    public EnemyMovement enemyMovement;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -17,12 +17,15 @@ public class EnemyAim : MonoBehaviour
 
     private void Update()
     {
+        if (enemyMovement.Dead)
+        {
+            return;
+        }
         UpdateWeaponPosition();
     }
 
     private void UpdateWeaponPosition()
     {
-
         Vector3 playerPosition = player.transform.position;
         Vector3 rotation = (playerPosition - transform.position).normalized;
 

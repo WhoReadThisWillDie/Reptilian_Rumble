@@ -5,10 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class IntroTransition : MonoBehaviour
 {
-    private float waitTime = 16f;
+    private float waitTime = 33f;
     void Start()
     {
         StartCoroutine(Wait());
+    }
+    void Update()
+    {
+    if (Input.anyKeyDown) 
+    {
+        SceneManager.LoadScene("MainMenu");
+    }    
     }
 
     IEnumerator Wait()

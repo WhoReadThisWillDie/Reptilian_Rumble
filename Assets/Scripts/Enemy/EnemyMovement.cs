@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     private Animator animator;
     private Sword sword;
+    private Rigidbody2D rb;
 
     private double distanceToPlayer;
     private float patrolDirection = 1.0f;
@@ -22,11 +23,10 @@ public class EnemyMovement : MonoBehaviour
     private float timer;
     private bool isAttackBlocked = true;
     private float delayBeforeAttack = 0.5f;
-
+    public bool Dead = false;
 
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         timer = patrolTimer;
         animator = GetComponent<Animator>();
@@ -35,24 +35,28 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Dead)
+        {
+            return;
+        }
         // Enemy doesn't fly away when pushed by player
+        
+            distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
-        distanceToPlayer = Vector2.Distance(transform.position, target.position);
-
-        if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
-        {
-            Chase();
-            isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
-        }
-        else if (distanceToPlayer <= attackDistance)
-        {
-            Attack();
-        }
-        else
-        {
-            Patrol();
-            isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
-        }
+            if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
+            {
+                Chase();
+                isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
+            }
+            else if (distanceToPlayer <= attackDistance)
+            {
+                Attack();
+            }
+            else
+            {
+                Patrol();
+                isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
+            }
     }
 
     private void Chase()
