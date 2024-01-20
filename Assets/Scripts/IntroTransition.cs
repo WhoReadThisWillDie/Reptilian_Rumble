@@ -12,10 +12,12 @@ public class IntroTransition : MonoBehaviour
     }
     void Update()
     {
-    if (Input.anyKeyDown) 
-    {
-        SceneManager.LoadScene("MainMenu");
-    }    
+        if(!PauseMenu.isPaused){ 
+            if (Input.anyKeyDown) 
+            {
+                SceneManager.LoadScene("MainMenu");
+            }    
+        }
     }
 
     IEnumerator Wait()

@@ -13,9 +13,11 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            sword.Attack();
+        if(!PauseMenu.isPaused){ 
+            if (Input.GetMouseButtonDown(0))
+            {
+                sword.Attack();
+            }
         }
     }
 }

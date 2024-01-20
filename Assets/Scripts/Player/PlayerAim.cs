@@ -20,11 +20,13 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        if (playerM.Dead)
-        {
-            return;
+        if(!PauseMenu.isPaused){ 
+            if (playerM.Dead)
+            {
+                return;
+            }
+            UpdateWeaponPosition();
         }
-        UpdateWeaponPosition();
     }
 
     private void UpdateWeaponPosition()

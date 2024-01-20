@@ -35,28 +35,30 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Dead)
-        {
-            return;
-        }
-        // Enemy doesn't fly away when pushed by player
-        
-            distanceToPlayer = Vector2.Distance(transform.position, target.position);
+        if(!PauseMenu.isPaused){
+            if (Dead)
+            {
+                return;
+            }
+            // Enemy doesn't fly away when pushed by player
+            
+                distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
-            if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
-            {
-                Chase();
-                isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
-            }
-            else if (distanceToPlayer <= attackDistance)
-            {
-                Attack();
-            }
-            else
-            {
-                Patrol();
-                isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
-            }
+                if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
+                {
+                    Chase();
+                    isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
+                }
+                else if (distanceToPlayer <= attackDistance)
+                {
+                    Attack();
+                }
+                else
+                {
+                    Patrol();
+                    isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
+                }
+    }
     }
 
     private void Chase()

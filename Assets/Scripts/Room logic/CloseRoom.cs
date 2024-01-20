@@ -26,13 +26,15 @@ public class CloseRoom : MonoBehaviour
 
     private void Update()
     {
-        if (playerEntered && !roomCompleted && spawner.GetRemainingEnemies() == 0)
-        {
-            Debug.Log("No enemies left!");
-            
-            DeactivateDoors();
-            doorsClosed = true;
-            roomCompleted = true;
+        if(!PauseMenu.isPaused){ 
+            if (playerEntered && !roomCompleted && spawner.GetRemainingEnemies() == 0)
+            {
+                Debug.Log("No enemies left!");
+                
+                DeactivateDoors();
+                doorsClosed = true;
+                roomCompleted = true;
+            }
         }
     }
 

@@ -28,35 +28,37 @@ public class BossBody : MonoBehaviour
 
     void Update()
     {
-        if (playerObject != null)
-        {
-            // Check if the player is to the left or right of the bossObject
-            bool playerIsLeft = playerObject.position.x < transform.position.x;
+        if(!PauseMenu.isPaused){
+            if (playerObject != null)
+            {
+                // Check if the player is to the left or right of the bossObject
+                bool playerIsLeft = playerObject.position.x < transform.position.x;
 
-            // Flip the bossObject accordingly
-            if (playerIsLeft && transform.localScale.x > 0)
-            {
-                // If the player is on the left and the boss is not already flipped, flip the bossObject
-                transform.localScale = new Vector3(-1, 1, 1);
+                // Flip the bossObject accordingly
+                if (playerIsLeft && transform.localScale.x > 0)
+                {
+                    // If the player is on the left and the boss is not already flipped, flip the bossObject
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
+                else if (!playerIsLeft && transform.localScale.x < 0)
+                {
+                    // If the player is on the right and the boss is flipped, reset the scale to face right
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
             }
-            else if (!playerIsLeft && transform.localScale.x < 0)
+            
+            rb.velocity = new Vector2(0, 0);
+            // Move the object in the x-direction
+            
+            distanceToPlayer = Vector2.Distance(transform.position, target.position);
+            if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
             {
-                // If the player is on the right and the boss is flipped, reset the scale to face right
-                transform.localScale = new Vector3(1, 1, 1);
+                Chase(isFreezed);
             }
-        }
-        
-        rb.velocity = new Vector2(0, 0);
-        // Move the object in the x-direction
-        
-        distanceToPlayer = Vector2.Distance(transform.position, target.position);
-        if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
-        {
-            Chase(isFreezed);
-        }
-        else
-        {
-            animator.SetBool("BossIsWalking", false);
+            else
+            {
+                animator.SetBool("BossIsWalking", false);
+            }
         }
     }
     

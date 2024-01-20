@@ -18,21 +18,25 @@ public class PlayerM : MonoBehaviour
 
     private void Update()
     {
-        if (Dead)
-        {
-            return;
+        if(!PauseMenu.isPaused){ 
+            if (Dead)
+            {
+                return;
+            }
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
+
+            input.Normalize();
+
+            ManageAnimations();
         }
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
-
-        input.Normalize();
-
-        ManageAnimations();
     }
 
     private void FixedUpdate()
     {
-        rb2d.velocity = input * speed;
+        if(!PauseMenu.isPaused){ 
+            rb2d.velocity = input * speed;
+        }
     }
 
     private void ManageAnimations()

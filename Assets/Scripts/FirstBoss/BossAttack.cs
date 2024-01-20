@@ -18,7 +18,9 @@ public class BossAttack : MonoBehaviour
 
     void Update()
     {
+        if(!PauseMenu.isPaused){
         BossChooseAttack();
+        }
     }
 
     private void BossChooseAttack()

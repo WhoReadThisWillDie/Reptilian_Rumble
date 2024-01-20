@@ -17,11 +17,13 @@ public class EnemyAim : MonoBehaviour
 
     private void Update()
     {
-        if (enemyMovement.Dead)
-        {
-            return;
+        if(!PauseMenu.isPaused){ 
+            if (enemyMovement.Dead)
+            {
+                return;
+            }
+            UpdateWeaponPosition();
         }
-        UpdateWeaponPosition();
     }
 
     private void UpdateWeaponPosition()

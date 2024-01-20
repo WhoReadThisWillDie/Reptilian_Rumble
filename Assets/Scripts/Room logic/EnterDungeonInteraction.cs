@@ -14,11 +14,13 @@ public class EnterDungeonInteraction : MonoBehaviour
 
     void Update()
     {
-        if (isInRange)
-        {
-            if (Input.GetKeyDown(interactKey))
+        if(!PauseMenu.isPaused){
+            if (isInRange)
             {
-                interactAction.Invoke();
+                if (Input.GetKeyDown(interactKey))
+                {
+                    interactAction.Invoke();
+                }
             }
         }
     }
