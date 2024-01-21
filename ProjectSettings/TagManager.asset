@@ -17,10 +17,10 @@ TagManager:
   - Enemy
   - BossAttacks
   - Environment
+  - Ground
   - 
-  - 
-  - 
-  - 
+  - Walls
+  - Minimap
   - 
   - 
   - 
