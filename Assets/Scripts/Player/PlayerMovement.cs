@@ -8,7 +8,7 @@ public class PlayerM : MonoBehaviour
     private Vector2 input;
     private Animator animator;
     [SerializeField] private float speed;
-    public bool Dead = false;
+    internal bool dead = false;
 
     private void Start()
     {
@@ -18,11 +18,13 @@ public class PlayerM : MonoBehaviour
 
     private void Update()
     {
-        if(!PauseMenu.isPaused){ 
-            if (Dead)
+        if (!PauseMenu.isPaused)
+        {
+            if (dead)
             {
                 return;
             }
+
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
@@ -34,7 +36,8 @@ public class PlayerM : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!PauseMenu.isPaused){ 
+        if (!PauseMenu.isPaused)
+        {
             rb2d.velocity = input * speed;
         }
     }

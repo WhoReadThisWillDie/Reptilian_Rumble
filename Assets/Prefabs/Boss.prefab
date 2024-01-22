@@ -535,8 +535,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
-  chaseDistance: 2
+  chaseDistance: 15
   attackDistance: 0.5
+  isFreezed: 0
   playerObject: {fileID: 0}
 --- !u!114 &2275878495547283491
 MonoBehaviour:
@@ -567,6 +568,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   hitCooldownDuration: 0
+  sword: {fileID: 0}
+  deadEnemy: {fileID: 0}
+  enemyMovement: {fileID: 0}
 --- !u!114 &1406703011936244860
 MonoBehaviour:
   m_ObjectHideFlags: 0

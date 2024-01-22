@@ -17,8 +17,9 @@ public class EnemyAim : MonoBehaviour
 
     private void Update()
     {
-        if(!PauseMenu.isPaused){ 
-            if (enemyMovement.Dead)
+        if (!PauseMenu.isPaused)
+        {
+            if (enemyMovement.dead)
             {
                 return;
             }

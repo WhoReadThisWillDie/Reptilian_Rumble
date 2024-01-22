@@ -20,8 +20,9 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        if(!PauseMenu.isPaused){ 
-            if (playerM.Dead)
+        if (!PauseMenu.isPaused)
+        {
+            if (playerM.dead)
             {
                 return;
             }

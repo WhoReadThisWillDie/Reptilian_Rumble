@@ -44,9 +44,9 @@ public class EnemyHealth : MonoBehaviour
         sword.SetActive(false);
         deadEnemy.SetActive(true);
         myRenderer.enabled = false;
-        enemyMovement.Dead = true;
+        enemyMovement.dead = true;
     }
-    
+
 
     public static bool GetIsHit()
     {

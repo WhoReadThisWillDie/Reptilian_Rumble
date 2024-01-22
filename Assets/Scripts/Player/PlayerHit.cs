@@ -4,33 +4,26 @@ using UnityEngine;
 
 public class PlayerHit : MonoBehaviour
 {
-     [SerializeField] private float flashDuration;
+    [SerializeField] private float flashDuration;
     [SerializeField] private Color flashColor;
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
     private bool isFlashing = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
     }
 
-     public void TakeHit()
+    public void TakeHit()
     {
         if (PlayerHealth.GetIsHit() && !isFlashing)
         {
             isFlashing = true;
             StartCoroutine(FlashCoroutineandSound());
-            
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private IEnumerator FlashCoroutineandSound()

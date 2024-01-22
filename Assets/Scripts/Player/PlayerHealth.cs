@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     private Renderer myRenderer;
     public PlayerM playerM;
     private static bool isHit;
-    
+
     public void Start()
     {
         deadPlayer.SetActive(false);
@@ -41,10 +41,10 @@ public class PlayerHealth : MonoBehaviour
         sword.SetActive(false);
         deadPlayer.SetActive(true);
         myRenderer.enabled = false;
-        playerM.Dead = true;
+        playerM.dead = true;
     }
 
-     public static bool GetIsHit()
+    public static bool GetIsHit()
     {
         return isHit;
     }

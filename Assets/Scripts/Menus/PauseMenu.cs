@@ -13,39 +13,43 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
-      
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            if(isPaused){
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
                 ResumeGame();
-               
+
             }
-            else{
+            else
+            {
                 PauseGame();
             }
         }
     }
-    
+
     private void PauseGame()
-{
-    pauseMenu.SetActive(true);
-    Time.timeScale = 0f;
-    isPaused = true;
-    
-}
-    
-    public void ResumeGame(){
-        pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-         isPaused = false;
-          
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+
     }
 
-     public void QuitGame()
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
+
+    }
+
+    public void QuitGame()
     {
         Application.Quit();
     }
@@ -54,12 +58,12 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
-        if(player.GetComponent<PlayerM>().Dead == true ){
-            player.GetComponent<PlayerM>().Dead = false;
+        if (player.GetComponent<PlayerM>().dead == true)
+        {
+            player.GetComponent<PlayerM>().dead = false;
         }
         SceneManager.LoadScene(2);
     }
-  
+
 }
 
-    
