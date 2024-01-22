@@ -14,7 +14,8 @@ public class EnterDungeonInteraction : MonoBehaviour
 
     void Update()
     {
-        if(!PauseMenu.isPaused){
+        if (!PauseMenu.isPaused)
+        {
             if (isInRange)
             {
                 if (Input.GetKeyDown(interactKey))
@@ -30,7 +31,7 @@ public class EnterDungeonInteraction : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isInRange = true;
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("FirstLevel");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

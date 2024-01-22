@@ -29,6 +29,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.enabled = false;
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
@@ -46,18 +47,19 @@ public class EnemyMovement : MonoBehaviour
             {
                 return;
             }
-            // Enemy doesn't fly away when pushed by player
 
             distanceToPlayer = Vector2.Distance(transform.position, target.position);
 
             if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
             {
+                agent.enabled = true;
                 Chase();
                 isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
             }
             else if (distanceToPlayer <= attackDistance)
             {
                 Attack();
+                agent.enabled = false;
             }
             else
             {
@@ -70,7 +72,6 @@ public class EnemyMovement : MonoBehaviour
     private void Chase()
     {
         agent.SetDestination(new Vector3(target.position.x, target.position.y, transform.position.z));
-        // transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         animator.SetBool("isWalking", true);
     }
 

@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject sword;
     public GameObject deadEnemy;
     private Rigidbody2D rb;
+    private BoxCollider2D enemyCollider;
     private Renderer myRenderer;
     public EnemyMovement enemyMovement;
 
@@ -19,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     {
         deadEnemy.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
+        enemyCollider = GetComponent<BoxCollider2D>();
         myRenderer = GetComponent<Renderer>();
     }
 
@@ -41,6 +43,7 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        enemyCollider.enabled = false;
         sword.SetActive(false);
         deadEnemy.SetActive(true);
         myRenderer.enabled = false;
