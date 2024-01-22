@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private Rigidbody2D rb;
     private Renderer myRenderer;
     public PlayerM playerM;
+    private static bool isHit;
     
     public void Start()
     {
@@ -24,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
         healthBar.SetHealth(health);
+
+        isHit = true;
 
         if (health <= 0)
         {
@@ -39,5 +42,10 @@ public class PlayerHealth : MonoBehaviour
         deadPlayer.SetActive(true);
         myRenderer.enabled = false;
         playerM.Dead = true;
+    }
+
+     public static bool GetIsHit()
+    {
+        return isHit;
     }
 }

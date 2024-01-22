@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject player;
     public static bool isPaused;
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,11 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMainMenu()
     {
-    
+        Time.timeScale = 1f;
+        isPaused = false;
+        if(player.GetComponent<PlayerM>().Dead == true ){
+            player.GetComponent<PlayerM>().Dead = false;
+        }
         SceneManager.LoadScene(2);
     }
   

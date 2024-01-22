@@ -43,6 +43,7 @@ public class Sword : MonoBehaviour
             // Player layer
             case 8:
                 objectsToHit[0].GetComponent<PlayerHealth>().TakeDamage(damage);
+                objectsToHit[0].GetComponent<PlayerHit>().TakeHit();
                 break;
             // Enemy layer
             case 64:

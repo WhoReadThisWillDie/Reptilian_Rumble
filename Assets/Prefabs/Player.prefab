@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 3680978708157346857}
   - component: {fileID: 5310594408558176198}
   - component: {fileID: 694254060870623571}
+  - component: {fileID: 6811005749254595465}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -363,6 +364,20 @@ MonoBehaviour:
   sword: {fileID: 5357175185670294463}
   deadPlayer: {fileID: 778404224373609375}
   playerM: {fileID: 8309906763947422557}
+--- !u!114 &6811005749254595465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946647845513170374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3f475e0ce1dc347815161490455a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0
+  flashColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1552471059427777872
 GameObject:
   m_ObjectHideFlags: 0
