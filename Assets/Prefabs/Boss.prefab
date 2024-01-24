@@ -335,7 +335,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   damage: 1
   player: {fileID: 0}
-  rotationSpeed: 0.5
+  rotationSpeed: 0.1
 --- !u!1 &7664147105530097037
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,8 +351,8 @@ GameObject:
   - component: {fileID: 8047780679993960081}
   - component: {fileID: 682943492959365008}
   - component: {fileID: 2275878495547283491}
-  - component: {fileID: 2612495817058598245}
-  - component: {fileID: 1406703011936244860}
+  - component: {fileID: 4868131527203782157}
+  - component: {fileID: 3217917892833780188}
   m_Layer: 6
   m_Name: Boss
   m_TagString: Untagged
@@ -554,7 +554,7 @@ MonoBehaviour:
   bossHead: {fileID: 6183593133742991369}
   waveAttack: {fileID: 4172157976030309793}
   delayBetweenAttacks: 6
---- !u!114 &2612495817058598245
+--- !u!114 &4868131527203782157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,15 +563,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7664147105530097037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b30620d1353531a41b0b087c344fa0e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4586991ee7045ba4bb4e1f73631b85b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  hitCooldownDuration: 0
-  sword: {fileID: 0}
-  deadEnemy: {fileID: 0}
-  enemyMovement: {fileID: 0}
---- !u!114 &1406703011936244860
+  hitCooldownDuration: 0.1
+  health: 1
+  maxHealth: 10
+--- !u!114 &3217917892833780188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -580,10 +578,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7664147105530097037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7680e88e19745944292206d6497bfad4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f604df01637ac344bd7c45f822a22f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashDuration: 0.1
-  flashColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   bounceForce: 5
   bounceDuration: 0.15

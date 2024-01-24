@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
-    public int damage;
+    [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private int damage;
     private Animator animator;
     private bool isAttackBlocked = false;
 
@@ -13,7 +13,7 @@ public class Wave : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
     }
-    
+
     public void WaveAttack()
     {
         if (isAttackBlocked)
@@ -23,11 +23,11 @@ public class Wave : MonoBehaviour
         isAttackBlocked = true;
         StartCoroutine(Wait(1f));
         animator.SetTrigger("WaveSpreads");
-        
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collider)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
             playerHealth.TakeDamage(damage);
         }

@@ -562,7 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   attackPoint: {fileID: 7147518328486525036}
   attackRange: 0.1
   damage: 1

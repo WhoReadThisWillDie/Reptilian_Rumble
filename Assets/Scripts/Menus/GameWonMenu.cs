@@ -15,14 +15,11 @@ public class GameWonMenu : MonoBehaviour
 
     void Update()
     {
-        if (boss.GetComponent<PlayerM>().dead == true)
+        if (boss.GetComponent<BossHealth>().health <= 0)
         {
             gameWonMenu.SetActive(true);
             Time.timeScale = 0f;
             PauseMenu.isPaused = true;
         }
     }
-
-
 }
-

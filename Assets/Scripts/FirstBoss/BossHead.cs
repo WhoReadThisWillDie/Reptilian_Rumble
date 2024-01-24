@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class Head : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
-    public int damage;
+    [SerializeField] private int damage;
+    [SerializeField] private Transform player; // Reference to the player object
+    [SerializeField] private PlayerHealth playerHealth;
     private Animator animator;
-    public Transform player; // Reference to the player object
-    public float rotationSpeed; // Rotation speed as needed
+    private float rotationSpeed = 0.1f; // Rotation speed as needed
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
     }
-    
 
     void Update()
     {
-        if(!PauseMenu.isPaused){
+        if (!PauseMenu.isPaused)
+        {
             // Calculate the direction vector from the object to the player
             Vector3 directionToPlayer = player.position - transform.position;
 
@@ -39,19 +39,18 @@ public class Head : MonoBehaviour
             {
                 transform.localScale = new Vector3(1f, 1f, 1f);
             }
-            else 
+            else
             {
                 transform.localScale = new Vector3(-1f, -1f, 1f);
             }
+        }
     }
-    }
-    
-    
 
     public void PukeAttack()
     {
         animator.SetTrigger("IsPuking");
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")

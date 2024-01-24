@@ -12,6 +12,7 @@ public class CloseBossRoom : MonoBehaviour
     private AudioSource audioSource;
     public AudioSource lvlMusic;
     public VideoPlayer videoPlayer;
+    public GameObject miniMap;
 
     void Start()
     {
@@ -30,12 +31,12 @@ public class CloseBossRoom : MonoBehaviour
 
     private void ActivateDoors()
     {
-        Debug.Log("Delay Start");
         PlayAudio();
         foreach (GameObject door in doors)
         {
             door.SetActive(true);
         }
+        miniMap.SetActive(false);
         PlayVideo();
         StartCoroutine(DelayVideo());
     }
@@ -52,9 +53,7 @@ public class CloseBossRoom : MonoBehaviour
     private IEnumerator DelayVideo()
     {
         yield return new WaitForSeconds(10.0f);
-        Debug.Log("Delay Ends");
         bossBody.isFreezed = true;
         Destroy(videoPlayer);
     }
-
 }

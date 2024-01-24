@@ -38,21 +38,26 @@ public class Sword : MonoBehaviour
         Collider2D[] objectsToHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, hitLayer);
 
         // Detect which layer is hitted
-        switch (hitLayer.value)
+        foreach (Collider2D collider in objectsToHit)
         {
-            // Player layer
-            case 8:
-                objectsToHit[0].GetComponent<PlayerHealth>().TakeDamage(damage);
-                objectsToHit[0].GetComponent<PlayerHit>().TakeHit();
-                break;
-            // Enemy layer
-            case 64:
-                foreach (Collider2D enemy in objectsToHit)
-                {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(damage);
-                    enemy.GetComponent<EnemyHit>().TakeHit(GetComponentInParent<Transform>()); // pass the player transform
-                }
-                break;
+            switch (LayerMask.LayerToName(collider.gameObject.layer))
+            {
+                // Player layer
+                case "Player":
+                    collider.GetComponent<PlayerHealth>().TakeDamage(damage);
+                    collider.GetComponent<PlayerHit>().TakeHit();
+                    break;
+                // Enemy layer
+                case "Enemy":
+                    collider.GetComponent<EnemyHealth>().TakeDamage(damage);
+                    collider.GetComponent<EnemyHit>().TakeHit(GetComponentInParent<Transform>());
+                    break;
+                //Boss layer
+                case "Boss":
+                    collider.GetComponent<BossHealth>().TakeDamage(damage);
+                    collider.GetComponent<BossHit>().TakeHit(GetComponentInParent<Transform>());
+                    break;
+            }
         }
     }
 
