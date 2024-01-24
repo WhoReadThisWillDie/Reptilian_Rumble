@@ -1,14 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 using UnityEngine;
 using UnityEngine.AI;
+using GameUtils.Utils;
 
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float patrolSpeed;
     [SerializeField] private double chaseDistance;
     [SerializeField] private double attackDistance;
 
@@ -19,8 +16,11 @@ public class EnemyMovement : MonoBehaviour
     private Sword sword;
 
     private double distanceToPlayer;
-    private float patrolDirection = 1.0f;
+    private float patrolDistanceMin = 0.5f;
+    private float patrolDistanceMax = 1.5f;
     private float patrolTimer = 2.0f; // Time to patrol in one direction before changing
+    private Vector3 startingPosition;
+    private Vector3 patrolPosition;
     private float timer;
     private bool isAttackBlocked = true;
     private float delayBeforeAttack = 0.5f;
@@ -29,17 +29,19 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.enabled = false;
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         timer = patrolTimer;
+        startingPosition = transform.position;
+        patrolPosition = GetPatrolPosition();
+
         animator = GetComponent<Animator>();
         sword = GetComponentInChildren<Sword>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (!PauseMenu.isPaused)
         {
@@ -81,14 +83,17 @@ public class EnemyMovement : MonoBehaviour
 
         if (timer <= 0)
         {
-            patrolDirection *= -1.0f; // Change direction
+            patrolPosition = GetPatrolPosition(); // Change direction
             timer = patrolTimer; // Reset the timer
         }
 
-        Vector3 targetPosition = transform.position + Vector3.right * patrolDirection * patrolSpeed * Time.deltaTime;
-
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, patrolSpeed * Time.deltaTime);
+        agent.SetDestination(patrolPosition);
         animator.SetBool("isWalking", true);
+    }
+
+    private Vector3 GetPatrolPosition()
+    {
+        return startingPosition + Utils.GetRandomDir() * UnityEngine.Random.Range(patrolDistanceMin, patrolDistanceMax);
     }
 
     private void Attack()

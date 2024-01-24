@@ -6,14 +6,13 @@ using UnityEngine.Video;
 
 public class CloseBossRoom : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> doors; 
+    [SerializeField] private List<GameObject> doors;
     public BossBody bossBody;
-    private bool playerEntered = false;
     private bool doorsClosed = false;
     private AudioSource audioSource;
     public AudioSource lvlMusic;
     public VideoPlayer videoPlayer;
-    
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -22,14 +21,13 @@ public class CloseBossRoom : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            playerEntered = true;
             if (!doorsClosed)
             {
                 ActivateDoors();
             }
         }
     }
-    
+
     private void ActivateDoors()
     {
         Debug.Log("Delay Start");
@@ -41,7 +39,7 @@ public class CloseBossRoom : MonoBehaviour
         PlayVideo();
         StartCoroutine(DelayVideo());
     }
-    
+
     void PlayAudio()
     {
         lvlMusic.Stop();
@@ -49,7 +47,7 @@ public class CloseBossRoom : MonoBehaviour
     }
     void PlayVideo()
     {
-            videoPlayer.Play();
+        videoPlayer.Play();
     }
     private IEnumerator DelayVideo()
     {
@@ -58,5 +56,5 @@ public class CloseBossRoom : MonoBehaviour
         bossBody.isFreezed = true;
         Destroy(videoPlayer);
     }
-    
+
 }
