@@ -17,9 +17,11 @@ public class GameWonMenu : MonoBehaviour
     {
         if (boss.GetComponent<BossHealth>().health <= 0)
         {
-            gameWonMenu.SetActive(true);
-            Time.timeScale = 0f;
-            PauseMenu.isPaused = true;
+            if(!PauseMenu.isPaused){
+                gameWonMenu.SetActive(true);
+                Time.timeScale = 0f;
+                PauseMenu.isPaused = true;
+            }
         }
     }
 }

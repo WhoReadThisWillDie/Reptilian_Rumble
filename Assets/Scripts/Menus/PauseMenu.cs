@@ -56,8 +56,12 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        if (isPaused)
+    {
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
         if (player.GetComponent<PlayerM>().dead == true)
         {
             player.GetComponent<PlayerM>().dead = false;

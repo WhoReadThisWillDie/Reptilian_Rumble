@@ -16,6 +16,11 @@ public class MenuActivation : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("MainLobby");
+        if (Time.timeScale != 1f)
+            {
+                Time.timeScale = 1f;
+            }
+            PauseMenu.isPaused = false;
     }
 
     public void QuitGame()
