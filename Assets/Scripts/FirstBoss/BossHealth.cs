@@ -19,8 +19,7 @@ public class BossHealth : MonoBehaviour
     }
 
     public void TakeDamage(int damage)
-    {
-        Debug.Log("Boss took damage");
+    { 
         isHit = true;
         health -= damage;
 

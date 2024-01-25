@@ -14,6 +14,7 @@ public class EnemyHit : MonoBehaviour
     private bool isFlashing = false;
     private Rigidbody2D rb2d;
     private int randomSound;
+    public Sounds playSounds;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class EnemyHit : MonoBehaviour
     {
         if (EnemyHealth.GetIsHit() && !isFlashing)
         {
+            playSounds.EnemyHitSound();
             isFlashing = true;
             StartCoroutine(FlashCoroutineandSound());
             Bounce(sender);

@@ -6,7 +6,7 @@ public class BossHit : MonoBehaviour
 {
     [SerializeField] private int bounceForce;
     [SerializeField] private float bounceDuration;
-
+    public Sounds playSounds;
     private Rigidbody2D rb2d;
 
     private void Start()
@@ -16,16 +16,17 @@ public class BossHit : MonoBehaviour
 
     public void TakeHit(Transform sender)
     {
-        if (EnemyHealth.GetIsHit())
+        if (BossHealth.GetIsHit())
         {
             Bounce(sender);
+            playSounds.BossHitSound();
         }
     }
 
     private void Bounce(Transform sender)
     {
         Vector2 direction = (transform.position - sender.position).normalized;
-        rb2d.AddForce(direction * bounceForce, ForceMode2D.Impulse);
+        rb2d.AddForce(direction * bounceForce * rb2d.mass, ForceMode2D.Impulse);
         StartCoroutine(Reset());
     }
 

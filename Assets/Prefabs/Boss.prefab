@@ -332,10 +332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8877c1d94ba42254489a64e94888e013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
   damage: 1
   player: {fileID: 0}
-  rotationSpeed: 0.1
+  playerHealth: {fileID: 0}
 --- !u!1 &7664147105530097037
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,4 +581,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 5
-  bounceDuration: 0.15
+  bounceDuration: 1
+  playSounds: {fileID: 0}
