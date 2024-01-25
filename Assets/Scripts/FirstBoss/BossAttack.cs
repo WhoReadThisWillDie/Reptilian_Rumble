@@ -5,49 +5,66 @@ using UnityEngine;
 
 public class BossAttack : MonoBehaviour
 {
-    private int chooseAttack;
-    public Head bossHead;
-    public Wave waveAttack;
+    private Head head;
+    private Wave wave;
     private Animator animator;
+
+    [SerializeField] private float delay;
+
+    private int randomAttack;
     private bool isAttackBlocked = false;
-    public float delayBetweenAttacks;
+    private readonly float stompDuration = 0.7f;
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+
+        head = GetComponentInChildren<Head>();
+        wave = GetComponentInChildren<Wave>();
     }
 
     void Update()
     {
-        if(!PauseMenu.isPaused){
-        BossChooseAttack();
+        if (!PauseMenu.isPaused)
+        {
+            Attack();
         }
     }
 
-    private void BossChooseAttack()
+    private void Attack()
     {
         if (isAttackBlocked)
         {
             return;
         }
-        chooseAttack = Random.Range(0, 2); // Boss will choose between 2 attacks
+        randomAttack = Random.Range(0, 2); // Boss will choose between 2 attacks
 
-        if (chooseAttack == 0)
+        switch (randomAttack)
         {
-            bossHead.PukeAttack();
-            chooseAttack = 10;
-        } else if (chooseAttack == 1)
-        {
-            animator.SetTrigger("BossStomps");
-            waveAttack.WaveAttack();
-            chooseAttack = 10;
+            case 0:
+                animator.SetTrigger("BossStomps");
+                StartCoroutine(StompAnimationDelay());
+                break;
+            case 1:
+                head.PukeAttack();
+                break;
         }
+
+
+
         isAttackBlocked = true;
-        StartCoroutine(Wait(delayBetweenAttacks));
+        StartCoroutine(DelayBetweenAttacks());
     }
-    
-    private IEnumerator Wait(float delay)
+
+    private IEnumerator DelayBetweenAttacks()
     {
         yield return new WaitForSeconds(delay);
         isAttackBlocked = false;
+    }
+
+    private IEnumerator StompAnimationDelay()
+    {
+        yield return new WaitForSeconds(stompDuration);
+        wave.WaveAttack();
     }
 }

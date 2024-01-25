@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour
 {
     private Animator animator;
 
-    [SerializeField] private LayerMask hitLayer;
+    [SerializeField] private LayerMask attackLayerMask;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange;
     [SerializeField] private int damage;
@@ -35,7 +35,7 @@ public class Sword : MonoBehaviour
         StartCoroutine(DelayAttack());
 
         // Detect enemies in attack range
-        Collider2D[] objectsToHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, hitLayer);
+        Collider2D[] objectsToHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackLayerMask);
 
         // Detect which layer is hitted
         foreach (Collider2D collider in objectsToHit)

@@ -4,37 +4,25 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private int damage;
     private Animator animator;
-    private bool isAttackBlocked = false;
 
-    void Start()
+    private void Start()
     {
         animator = GetComponentInChildren<Animator>();
     }
 
     public void WaveAttack()
     {
-        if (isAttackBlocked)
-        {
-            return;
-        }
-        isAttackBlocked = true;
-        StartCoroutine(Wait(1f));
         animator.SetTrigger("WaveSpreads");
     }
 
-    private void OnCollisionEnter2D(Collision2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(damage);
+            collider.GetComponent<PlayerHealth>().TakeDamage(damage);
+            collider.GetComponent<PlayerHit>().TakeHit();
         }
-    }
-    private IEnumerator Wait(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        isAttackBlocked = false;
     }
 }

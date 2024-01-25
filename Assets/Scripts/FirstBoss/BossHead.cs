@@ -1,13 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Head : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private Transform player; // Reference to the player object
-    [SerializeField] private PlayerHealth playerHealth;
     private Animator animator;
     private float rotationSpeed = 0.1f; // Rotation speed as needed
 
@@ -51,11 +51,12 @@ public class Head : MonoBehaviour
         animator.SetTrigger("IsPuking");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collider.CompareTag("Player"))
         {
-            playerHealth.TakeDamage(damage);
+            collider.GetComponent<PlayerHealth>().TakeDamage(damage);
+            collider.GetComponent<PlayerHit>().TakeHit();
         }
     }
 }
