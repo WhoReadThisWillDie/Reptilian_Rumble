@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -13,6 +14,7 @@ public class CloseBossRoom : MonoBehaviour
     public AudioSource lvlMusic;
     public VideoPlayer videoPlayer;
     public GameObject miniMap;
+    public GameObject skipText;
 
     void Start()
     {
@@ -29,8 +31,19 @@ public class CloseBossRoom : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            bossBody.isFreezed = true;
+            Destroy(videoPlayer);
+            skipText.SetActive(false);
+        }
+    }
+
     private void ActivateDoors()
     {
+        skipText.SetActive(true);
         PlayAudio();
         foreach (GameObject door in doors)
         {
