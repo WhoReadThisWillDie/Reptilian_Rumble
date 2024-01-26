@@ -13,7 +13,6 @@ public class EnemyHit : MonoBehaviour
     private Color originalColor;
     private bool isFlashing = false;
     private Rigidbody2D rb2d;
-    private int randomSound;
     public Sounds playSounds;
 
     private void Start()
@@ -46,7 +45,6 @@ public class EnemyHit : MonoBehaviour
     {
         Vector2 direction = (transform.position - sender.position).normalized;
         rb2d.AddForce(direction * bounceForce * rb2d.mass, ForceMode2D.Impulse);
-        Debug.Log(sender.position);
         StartCoroutine(Reset());
     }
 

@@ -9,7 +9,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private double chaseDistance;
     [SerializeField] private double attackDistance;
 
-    private Rigidbody2D rb2d;
     private NavMeshAgent agent;
     private Transform target;
     private Animator animator;
@@ -54,13 +53,11 @@ public class EnemyMovement : MonoBehaviour
 
             if (distanceToPlayer > attackDistance && distanceToPlayer < chaseDistance)
             {
-                agent.enabled = true;
                 Chase();
                 isAttackBlocked = true; // reset delay before attack if player is outside the attack distance
             }
             else if (distanceToPlayer <= attackDistance)
             {
-                agent.enabled = false;
                 Attack();
             }
             else
@@ -98,6 +95,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Attack()
     {
+        agent.SetDestination(transform.position);
         animator.SetBool("isWalking", false);
         StartCoroutine(DelayBeforeAttack(delayBeforeAttack));
 

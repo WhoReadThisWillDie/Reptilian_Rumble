@@ -34,7 +34,7 @@ public class CloseBossRoom : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            bossBody.isFreezed = true;
+            bossBody.isFreezed = false;
             Destroy(videoPlayer);
             skipText.SetActive(false);
         }
@@ -65,7 +65,7 @@ public class CloseBossRoom : MonoBehaviour
     private IEnumerator DelayVideo()
     {
         yield return new WaitForSeconds(10.0f);
-        bossBody.isFreezed = true;
+        bossBody.isFreezed = false;
         Destroy(videoPlayer);
     }
 }
