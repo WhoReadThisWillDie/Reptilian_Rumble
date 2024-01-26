@@ -25,10 +25,14 @@ public class GameOverMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        Time.timeScale = 1f;
-        PauseMenu.isPaused = false;
+        GameWonMenu.bossDead = false;
         player.GetComponent<PlayerM>().dead = false;
         SceneManager.LoadScene(4);
+        if(Time.timeScale != 1f){
+            Time.timeScale = 1f;
+            PauseMenu.isPaused = false;
+        }
+       
     }
 
 }

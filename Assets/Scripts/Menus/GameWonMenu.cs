@@ -8,20 +8,24 @@ public class GameWonMenu : MonoBehaviour
 {
     [SerializeField] private GameObject gameWonMenu;
     [SerializeField] private GameObject boss;
+    public static bool bossDead;
     void Start()
     {
         gameWonMenu.SetActive(false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (boss.GetComponent<BossHealth>().health <= 0)
         {
-            if(!PauseMenu.isPaused){
+            bossDead = true;
+        }
+
+
+        if(bossDead){
                 gameWonMenu.SetActive(true);
                 Time.timeScale = 0f;
                 PauseMenu.isPaused = true;
-            }
         }
     }
 }

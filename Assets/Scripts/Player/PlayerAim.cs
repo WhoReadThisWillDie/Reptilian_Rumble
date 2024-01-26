@@ -11,11 +11,13 @@ public class PlayerAim : MonoBehaviour
     private Transform transformWeapon;
     private bool isFacingRight = true;
     public PlayerM playerM;
+    private Transform pressE;
 
     private void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         transformWeapon = GetComponentInChildren<Sword>().transform;
+        pressE = transform.Find("PressE");
     }
 
     private void Update()
@@ -44,6 +46,7 @@ public class PlayerAim : MonoBehaviour
         {
             isFacingRight = !isFacingRight;
             transform.Rotate(new Vector3(0, 180, 0));
+            pressE.Rotate(new Vector3(0, -180, 0));
             weaponScale.y *= -1;
 
         }
