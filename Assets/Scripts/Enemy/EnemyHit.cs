@@ -46,6 +46,7 @@ public class EnemyHit : MonoBehaviour
     {
         Vector2 direction = (transform.position - sender.position).normalized;
         rb2d.AddForce(direction * bounceForce * rb2d.mass, ForceMode2D.Impulse);
+        Debug.Log(sender.position);
         StartCoroutine(Reset());
     }
 

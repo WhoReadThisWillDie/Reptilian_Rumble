@@ -60,8 +60,8 @@ public class EnemyMovement : MonoBehaviour
             }
             else if (distanceToPlayer <= attackDistance)
             {
-                Attack();
                 agent.enabled = false;
+                Attack();
             }
             else
             {

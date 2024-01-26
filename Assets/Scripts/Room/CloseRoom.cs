@@ -5,7 +5,7 @@ using UnityEngine;
 public class CloseRoom : MonoBehaviour
 {
     [SerializeField] private List<GameObject> doors;
-    [SerializeField] private Spawner spawner;
+    [SerializeField] private List<GameObject> enemies;
 
     private bool playerEntered = false;
     private bool roomCompleted = false;
@@ -26,11 +26,10 @@ public class CloseRoom : MonoBehaviour
 
     private void Update()
     {
-        if(!PauseMenu.isPaused){ 
-            if (playerEntered && !roomCompleted && spawner.GetRemainingEnemies() == 0)
+        if (!PauseMenu.isPaused)
+        {
+            if (playerEntered && !roomCompleted && GetActiveEnemiesCount() == 0)
             {
-                Debug.Log("No enemies left!");
-                
                 DeactivateDoors();
                 doorsClosed = true;
                 roomCompleted = true;
@@ -52,5 +51,18 @@ public class CloseRoom : MonoBehaviour
         {
             door.SetActive(false);
         }
+    }
+
+    private int GetActiveEnemiesCount()
+    {
+        int count = 0;
+        foreach (GameObject enemy in enemies)
+        {
+            if (!enemy.GetComponent<EnemyMovement>().dead)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }
