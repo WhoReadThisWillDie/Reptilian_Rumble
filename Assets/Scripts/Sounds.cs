@@ -12,38 +12,38 @@ public class Sounds : MonoBehaviour
     public AudioSource bossSound1;
     public AudioSource bossSound2;
     public AudioSource bossSound3;
-    private int randomForEnemies;
-    
-    private void Update()
-    {
-        randomForEnemies = Random.Range(0, 3);
-    }
 
     public void EnemyHitSound()
     {
-        if (randomForEnemies == 0)
+        int randomSound = Random.Range(0, 3);
+        switch (randomSound)
         {
-            enemySound1.Play();
-        } else if (randomForEnemies == 1)
-        {
-            enemySound2.Play();
-        } else if (randomForEnemies == 2)
-        {
-            enemySound3.Play();
+            case 0:
+                enemySound1.Play();
+                break;
+            case 1:
+                enemySound2.Play();
+                break;
+            case 2:
+                enemySound3.Play();
+                break;
         }
     }
-    
+
     public void BossHitSound()
     {
-        if (randomForEnemies == 0)
+        int randomSound = Random.Range(0, 3);
+        switch (randomSound)
         {
-            bossSound1.Play();
-        } else if (randomForEnemies == 1)
-        {
-            bossSound2.Play();
-        } else if (randomForEnemies == 2)
-        {
-            bossSound3.Play();
+            case 0:
+                bossSound1.Play();
+                break;
+            case 1:
+                bossSound2.Play();
+                break;
+            case 2:
+                bossSound3.Play();
+                break;
         }
     }
 }

@@ -192,7 +192,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -807204257
   m_SortingLayer: 2
-  m_SortingOrder: 9
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1130491587, guid: f564a398ca4c7fd48adeb552625eed8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -404,7 +404,7 @@ Transform:
   m_GameObject: {fileID: 1552471059427777872}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14069, y: -0.00014, z: -0.01037372}
+  m_LocalPosition: {x: 0.103, y: -0.066, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -594,7 +594,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5357175185670294463}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.92387956, y: 0.38268343, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
@@ -602,7 +602,7 @@ Transform:
   - {fileID: 7147518328486525036}
   - {fileID: 3667769101895345162}
   m_Father: {fileID: 1944833278611236141}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &430273865037813442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 576
   attackPoint: {fileID: 7147518328486525036}
   attackRange: 0.1
   damage: 1
@@ -660,9 +660,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingLayerID: -807204257
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1030,8 +1030,8 @@ Transform:
   m_GameObject: {fileID: 8110430775746162764}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.093, y: -0.095, z: 0}
-  m_LocalScale: {x: 0.0472102, y: 0.044859666, z: 0}
+  m_LocalPosition: {x: 0.006, y: -0.059, z: 0}
+  m_LocalScale: {x: 0.17093332, y: 0.16714999, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1944833278611236141}
